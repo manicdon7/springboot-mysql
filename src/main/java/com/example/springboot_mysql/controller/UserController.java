@@ -1,4 +1,3 @@
-// UserController.java
 package com.example.springboot_mysql.controller;
 
 import java.util.List;
@@ -15,19 +14,16 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
     
-    // Create a new user
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
     
-    // Get all users
     @GetMapping
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
     
-    // Get user by ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         User user = userRepository.findById(id)
@@ -38,7 +34,6 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
     
-    // Update user
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User user = userRepository.findById(id)
@@ -54,7 +49,6 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
     
-    // Delete user
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         User user = userRepository.findById(id)
